@@ -198,15 +198,46 @@ function doPost(e) {
    - Copie a URL gerada
 
 4. **Atualizar index.html**
-   - Procure por `// Optional: Send to Google Sheets`
-   - Descomente e cole a URL:
+   - Abra `index.html` e procure, no início do bloco de JavaScript, por:
 
 ```javascript
-fetch('SUA_URL_DO_GOOGLE_APPS_SCRIPT', {
-    method: 'POST',
-    body: JSON.stringify({ name, email, whatsapp })
-});
+const LEAD_ENDPOINT = 'COLE_AQUI_A_URL_DO_SEU_ENDPOINT';
 ```
+
+   - Substitua pelo link gerado no passo 3:
+
+```javascript
+const LEAD_ENDPOINT = 'https://script.google.com/macros/s/SEU_ID_AQUI/exec';
+```
+
+> ⚠️ **Enquanto essa URL não for configurada, o formulário exibe uma mensagem de erro
+> em vez de "Sucesso".** Isso é proposital: antes, a página dizia "Sucesso!" mesmo sem
+> enviar nada a lugar nenhum, e todos os leads eram perdidos silenciosamente. Agora o
+> sucesso só aparece quando o envio é realmente confirmado pelo servidor. Se você abrir
+> o console do navegador (F12), verá a instrução exata do que falta configurar.
+
+**O que é enviado para o seu endpoint (JSON):**
+
+```json
+{
+  "name": "Maria Silva",
+  "email": "maria@exemplo.com",
+  "whatsapp": "(11) 99999-8888",
+  "whatsappDigits": "11999998888",
+  "origem": "https://sua-landing-page.com/",
+  "data": "2026-08-26T12:00:00.000Z"
+}
+```
+
+**Outras opções de configuração** (no mesmo bloco, logo abaixo do `LEAD_ENDPOINT`):
+
+```javascript
+const REDIRECT_TO_THANK_YOU = true;      // redireciona para a página de obrigado
+const THANK_YOU_URL = 'obrigado.html';   // qual página abrir após o cadastro
+```
+
+Se preferir que o visitante continue na mesma página (apenas com a mensagem verde de
+sucesso), troque `REDIRECT_TO_THANK_YOU` para `false`.
 
 ---
 
@@ -328,7 +359,8 @@ Se você tem hospedagem (Hostinger, etc):
 
 - [ ] Testei a landing page em desktop
 - [ ] Testei a landing page em mobile
-- [ ] Testei o formulário (envio funciona?)
+- [ ] Configurei o `LEAD_ENDPOINT` no index.html
+- [ ] Testei o formulário (o lead chegou mesmo na planilha/CRM?)
 - [ ] E-book está hospedado e link funciona
 - [ ] Informações de contato estão corretas
 - [ ] E-mail automático está configurado (ou envio manual pronto)

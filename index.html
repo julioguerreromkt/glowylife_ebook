@@ -459,6 +459,54 @@
                 transform: translateY(0);
             }
         }
+
+        /* Estados de erro / carregamento do formulário de cadastro */
+        .error-message {
+            display: none;
+            background: #EF4444;
+            color: #FFFFFF;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 20px;
+            font-weight: 600;
+        }
+        
+        .error-message.show {
+            display: block;
+            animation: slideDown 0.5s ease;
+        }
+        
+        .form-group input.invalid {
+            border-color: #EF4444;
+        }
+        
+        .form-group input.invalid:focus {
+            border-color: #EF4444;
+            box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15);
+        }
+        
+        .field-error {
+            display: none;
+            color: #EF4444;
+            font-size: 13px;
+            font-weight: 600;
+            margin-top: 6px;
+        }
+        
+        .field-error.show {
+            display: block;
+        }
+        
+        .submit-btn:disabled {
+            opacity: 0.65;
+            cursor: not-allowed;
+        }
+        
+        .submit-btn:disabled:hover {
+            transform: none;
+            box-shadow: none;
+        }
     </style>
 </head>
 <body>
@@ -544,20 +592,23 @@
             <h2>Baixe Agora Gratuitamente!</h2>
             <p class="form-subtitle">Preencha os dados abaixo e receba o e-book no seu e-mail</p>
             
-            <form id="leadForm">
+            <form id="leadForm" novalidate>
                 <div class="form-group">
                     <label for="name">Nome Completo *</label>
                     <input type="text" id="name" name="name" placeholder="Digite seu nome" required>
+                    <span class="field-error" id="nameError"></span>
                 </div>
                 
                 <div class="form-group">
                     <label for="email">E-mail *</label>
                     <input type="email" id="email" name="email" placeholder="seu@email.com" required>
+                    <span class="field-error" id="emailError"></span>
                 </div>
                 
                 <div class="form-group">
                     <label for="whatsapp">WhatsApp *</label>
                     <input type="tel" id="whatsapp" name="whatsapp" placeholder="(11) 99999-9999" required>
+                    <span class="field-error" id="whatsappError"></span>
                 </div>
                 
                 <button type="submit" class="submit-btn">
@@ -573,6 +624,8 @@
             <div class="success-message" id="successMessage">
                 <i class="fas fa-check-circle"></i> Sucesso! Verifique seu e-mail e WhatsApp para receber o e-book.
             </div>
+            
+            <div class="error-message" id="errorMessage" role="alert"></div>
         </div>
     </div>
     
@@ -671,59 +724,194 @@
             });
         });
         
+        // ============================================================
+        // CONFIGURAÇÃO DO CADASTRO  (leia o GUIA_IMPLEMENTACAO.md)
+        // ============================================================
+        // Cole abaixo a URL do seu Google Apps Script (ou endpoint do seu
+        // CRM / e-mail marketing). Enquanto o valor for o placeholder, o
+        // formulário exibe um ERRO em vez de fingir sucesso — assim nenhum
+        // lead é perdido silenciosamente.
+        const LEAD_ENDPOINT = 'COLE_AQUI_A_URL_DO_SEU_ENDPOINT';
+        
+        // Redirecionar para a página de obrigado após o cadastro.
+        const REDIRECT_TO_THANK_YOU = true;
+        const THANK_YOU_URL = 'obrigado.html';
+        
+        // ============================================================
+        
+        const leadForm = document.getElementById('leadForm');
+        const submitBtn = leadForm.querySelector('.submit-btn');
+        const submitBtnHtml = submitBtn.innerHTML;
+        const successMessage = document.getElementById('successMessage');
+        const errorMessage = document.getElementById('errorMessage');
+        let isSubmitting = false;
+        
+        const FIELDS = ['name', 'email', 'whatsapp'];
+        
+        function onlyDigits(value) {
+            return value.replace(/\D/g, '');
+        }
+        
+        function setFieldError(field, message) {
+            const input = document.getElementById(field);
+            const target = document.getElementById(field + 'Error');
+            input.classList.toggle('invalid', Boolean(message));
+            input.setAttribute('aria-invalid', message ? 'true' : 'false');
+            target.textContent = message || '';
+            target.classList.toggle('show', Boolean(message));
+        }
+        
+        function clearFeedback() {
+            FIELDS.forEach(field => setFieldError(field, ''));
+            errorMessage.classList.remove('show');
+            successMessage.classList.remove('show');
+        }
+        
+        function showFormError(message) {
+            errorMessage.innerHTML = '<i class="fas fa-exclamation-circle"></i> ' + message;
+            errorMessage.classList.add('show');
+        }
+        
+        function setLoading(loading) {
+            isSubmitting = loading;
+            submitBtn.disabled = loading;
+            submitBtn.innerHTML = loading
+                ? 'Enviando... <i class="fas fa-spinner fa-spin"></i>'
+                : submitBtnHtml;
+        }
+        
+        // Valida os três campos e devolve os dados já normalizados,
+        // ou null se algo estiver inválido.
+        function validateLead() {
+            const name = document.getElementById('name').value.trim().replace(/\s+/g, ' ');
+            const email = document.getElementById('email').value.trim().toLowerCase();
+            const whatsapp = document.getElementById('whatsapp').value.trim();
+            const whatsappDigits = onlyDigits(whatsapp);
+            let firstInvalid = null;
+            
+            if (name.length < 3 || !/[a-zà-ÿ]/i.test(name)) {
+                setFieldError('name', 'Digite seu nome completo.');
+                firstInvalid = firstInvalid || 'name';
+            }
+            
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) {
+                setFieldError('email', 'Digite um e-mail válido (ex.: seu@email.com).');
+                firstInvalid = firstInvalid || 'email';
+            }
+            
+            if (whatsappDigits.length < 10 || whatsappDigits.length > 11) {
+                setFieldError('whatsapp', 'Digite o WhatsApp com DDD (ex.: (11) 99999-9999).');
+                firstInvalid = firstInvalid || 'whatsapp';
+            }
+            
+            if (firstInvalid) {
+                document.getElementById(firstInvalid).focus();
+                return null;
+            }
+            
+            return { name, email, whatsapp, whatsappDigits };
+        }
+        
+        // Envia o lead. Lança erro se o envio não for confirmado —
+        // o sucesso só é exibido quando o servidor responde OK.
+        async function sendLead(payload) {
+            if (!LEAD_ENDPOINT || LEAD_ENDPOINT.indexOf('COLE_AQUI') === 0) {
+                throw new Error('ENDPOINT_NAO_CONFIGURADO');
+            }
+            
+            // 'text/plain' evita o preflight de CORS; o Google Apps Script
+            // continua lendo o corpo normalmente com JSON.parse.
+            const response = await fetch(LEAD_ENDPOINT, {
+                method: 'POST',
+                headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                body: JSON.stringify(payload)
+            });
+            
+            if (!response.ok) {
+                throw new Error('HTTP ' + response.status);
+            }
+            
+            return response;
+        }
+        
         // Form submission
-        document.getElementById('leadForm').addEventListener('submit', function(e) {
+        leadForm.addEventListener('submit', async function (e) {
             e.preventDefault();
             
-            // Get form data
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const whatsapp = document.getElementById('whatsapp').value;
+            if (isSubmitting) return;
             
-            // Here you would normally send data to your backend/CRM
-            // For now, we'll simulate success
-            console.log('Lead captured:', { name, email, whatsapp });
+            clearFeedback();
             
-            // Show success message
-            document.getElementById('successMessage').classList.add('show');
+            const lead = validateLead();
+            if (!lead) return;
             
-            // Reset form
-            this.reset();
+            setLoading(true);
             
-            // Hide success message after 5 seconds
-            setTimeout(() => {
-                document.getElementById('successMessage').classList.remove('show');
-            }, 5000);
-            
-            // Optional: Send to Google Sheets, email service, CRM, etc.
-            // Example with Google Sheets (you need to set up Google Apps Script)
-            /*
-            fetch('YOUR_GOOGLE_APPS_SCRIPT_URL', {
-                method: 'POST',
-                body: JSON.stringify({ name, email, whatsapp })
+            try {
+                await sendLead({
+                    name: lead.name,
+                    email: lead.email,
+                    whatsapp: lead.whatsapp,
+                    whatsappDigits: lead.whatsappDigits,
+                    origem: window.location.href,
+                    data: new Date().toISOString()
+                });
+                
+                successMessage.classList.add('show');
+                leadForm.reset();
+                
+                if (REDIRECT_TO_THANK_YOU) {
+                    setTimeout(() => {
+                        window.location.href = THANK_YOU_URL;
+                    }, 1500);
+                    return;
+                }
+                
+                setTimeout(() => {
+                    successMessage.classList.remove('show');
+                }, 5000);
+            } catch (error) {
+                if (error.message === 'ENDPOINT_NAO_CONFIGURADO') {
+                    console.error(
+                        'Cadastro não enviado: LEAD_ENDPOINT ainda está com o valor de exemplo. ' +
+                        'Configure a URL do Google Apps Script (ou do seu CRM) no topo do bloco ' +
+                        'de JavaScript em index.html. Veja "CONFIGURAR ENVIO DO E-BOOK" no GUIA_IMPLEMENTACAO.md.'
+                    );
+                } else {
+                    console.error('Falha ao enviar o cadastro:', error);
+                }
+                
+                showFormError(
+                    'Não conseguimos concluir seu cadastro agora. ' +
+                    'Tente novamente em instantes ou fale com a gente no WhatsApp.'
+                );
+            } finally {
+                setLoading(false);
+            }
+        });
+        
+        // Limpa o erro do campo assim que a pessoa começa a corrigi-lo
+        FIELDS.forEach(field => {
+            document.getElementById(field).addEventListener('input', () => {
+                setFieldError(field, '');
             });
-            */
-            
-            // Optional: Redirect to thank you page
-            // setTimeout(() => {
-            //     window.location.href = 'obrigado.html';
-            // }, 2000);
         });
         
         // WhatsApp mask
-        document.getElementById('whatsapp').addEventListener('input', function(e) {
-            let value = e.target.value.replace(/\D/g, '');
-            if (value.length > 11) value = value.slice(0, 11);
-            
-            if (value.length > 6) {
-                value = `(${value.slice(0, 2)}) ${value.slice(2, 7)}-${value.slice(7)}`;
-            } else if (value.length > 2) {
-                value = `(${value.slice(0, 2)}) ${value.slice(2)}`;
-            } else if (value.length > 0) {
-                value = `(${value}`;
+        function formatWhatsapp(digits) {
+            if (digits.length === 0) return '';
+            if (digits.length <= 2) return '(' + digits;
+            if (digits.length <= 6) return '(' + digits.slice(0, 2) + ') ' + digits.slice(2);
+            // Fixo (10 dígitos): (11) 3333-4444
+            if (digits.length <= 10) {
+                return '(' + digits.slice(0, 2) + ') ' + digits.slice(2, 6) + '-' + digits.slice(6);
             }
-            
-            e.target.value = value;
+            // Celular (11 dígitos): (11) 99999-9999
+            return '(' + digits.slice(0, 2) + ') ' + digits.slice(2, 7) + '-' + digits.slice(7, 11);
+        }
+        
+        document.getElementById('whatsapp').addEventListener('input', function (e) {
+            e.target.value = formatWhatsapp(onlyDigits(e.target.value).slice(0, 11));
         });
     </script>
 </body>
