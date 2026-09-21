@@ -914,5 +914,88 @@
             e.target.value = formatWhatsapp(onlyDigits(e.target.value).slice(0, 11));
         });
     </script>
+
+    <!-- Animações de entrada com Motion (motion.dev), carregado via CDN.
+         Degradação graciosa: se o Motion não carregar, o conteúdo continua
+         visível. Respeita prefers-reduced-motion. Não interfere no formulário. -->
+    <script type="module">
+        (() => {
+            // Quem pediu menos movimento não vê animação nenhuma.
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+            const EASE = [0.22, 1, 0.36, 1];
+
+            // Elementos que animam ao carregar (hero), em cascata.
+            const heroEls = ['.hero h1', '.hero .subtitle']
+                .map(sel => document.querySelector(sel))
+                .filter(Boolean);
+            const badge = document.querySelector('.badge');
+
+            // Grupos revelados ao entrar na viewport, com stagger nos filhos.
+            const groups = [
+                { container: '.main-content',       child: '.benefits, .form-container', y: 28, gap: 0.12 },
+                { container: '.social-proof-stats', child: '.stat-item',                 y: 20, gap: 0.10 },
+                { container: '.insights-grid',      child: '.insight-card',              y: 28, gap: 0.08 },
+                { container: '.cta-section',         child: 'h2, p, .cta-btn',            y: 24, gap: 0.10 },
+            ];
+            const singles = ['.insights-preview h2'];
+
+            // Esconde de forma SÍNCRONA (antes do import) pra reduzir flash.
+            // Guardamos tudo pra restaurar caso o Motion não carregue.
+            const hidden = [];
+            const hide = (el, y) => {
+                el.style.opacity = '0';
+                if (y != null) el.style.transform = `translateY(${y}px)`;
+                hidden.push(el);
+            };
+            const restore = () => hidden.forEach(el => {
+                el.style.opacity = '';
+                el.style.transform = '';
+            });
+
+            heroEls.forEach(el => hide(el, 24));
+            if (badge) hide(badge, null); // só opacity: não conflita com o @keyframes pulse
+            singles.forEach(sel => {
+                const el = document.querySelector(sel);
+                if (el) hide(el, 24);
+            });
+            groups.forEach(g => {
+                const container = document.querySelector(g.container);
+                if (!container) return;
+                container.querySelectorAll(g.child).forEach(el => hide(el, g.y));
+            });
+
+            import('https://cdn.jsdelivr.net/npm/motion@13.4.0/+esm')
+                .then(({ animate, inView }) => {
+                    const rise = (el, delay = 0, duration = 0.6) =>
+                        animate(el, { opacity: 1, transform: 'translateY(0px)' },
+                            { duration, delay, ease: EASE });
+
+                    // Hero em cascata no carregamento.
+                    if (badge) animate(badge, { opacity: 1 }, { duration: 0.5 });
+                    heroEls.forEach((el, i) => rise(el, 0.15 + i * 0.12));
+
+                    // Títulos avulsos: revelam ao entrar na tela.
+                    singles.forEach(sel => {
+                        const el = document.querySelector(sel);
+                        if (el) inView(el, () => rise(el), { amount: 0.2 });
+                    });
+
+                    // Grupos: revelam os filhos em cascata ao entrar na tela.
+                    groups.forEach(g => {
+                        const container = document.querySelector(g.container);
+                        if (!container) return;
+                        const children = Array.from(container.querySelectorAll(g.child));
+                        inView(container, () => {
+                            children.forEach((el, i) => rise(el, i * g.gap));
+                        }, { amount: 0.15 });
+                    });
+                })
+                .catch(err => {
+                    console.warn('Motion não carregou; a página segue sem animações.', err);
+                    restore();
+                });
+        })();
+    </script>
 </body>
 </html>
