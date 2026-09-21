@@ -315,5 +315,49 @@
             </div>
         </div>
     </div>
+
+    <!-- Animações de entrada com Motion (motion.dev), carregado via CDN.
+         Degradação graciosa: se o CDN falhar, o conteúdo continua visível.
+         Respeita prefers-reduced-motion. O ícone de sucesso mantém seu
+         próprio @keyframes scaleIn e não é tocado aqui. -->
+    <script type="module">
+        (() => {
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+            const EASE = [0.22, 1, 0.36, 1];
+
+            // Tudo cabe numa tela, então a entrada é uma cascata no load.
+            const seq = [
+                { sel: 'h1',             base: 0.15 },
+                { sel: '.subtitle',      base: 0.27 },
+                { sel: '.next-steps h2', base: 0.40 },
+                { sel: '.step',          base: 0.50, gap: 0.10 }, // passos em cascata
+                { sel: '.cta-buttons',   base: 0.95 },
+                { sel: '.social-links',  base: 1.07 },
+            ];
+
+            const hidden = [];
+            const targets = [];
+            seq.forEach(item => {
+                document.querySelectorAll(item.sel).forEach((el, i) => {
+                    el.style.opacity = '0';
+                    el.style.transform = 'translateY(20px)';
+                    hidden.push(el);
+                    targets.push({ el, delay: item.base + (item.gap ? i * item.gap : 0) });
+                });
+            });
+
+            import('https://cdn.jsdelivr.net/npm/motion@13.4.0/+esm')
+                .then(({ animate }) => {
+                    targets.forEach(({ el, delay }) =>
+                        animate(el, { opacity: 1, transform: 'translateY(0px)' },
+                            { duration: 0.6, delay, ease: EASE }));
+                })
+                .catch(err => {
+                    console.warn('Motion não carregou; a página segue sem animações.', err);
+                    hidden.forEach(el => { el.style.opacity = ''; el.style.transform = ''; });
+                });
+        })();
+    </script>
 </body>
 </html>
