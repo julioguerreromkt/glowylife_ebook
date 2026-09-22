@@ -3,642 +3,514 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Baixe grátis o e-book com 10 insights que vão transformar sua visão sobre saúde, bem-estar e liberdade financeira.">
-    <title>10 Insights Que Vão Transformar Sua Vida | E-book Gratuito</title>
-    
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Poppins:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-    
+    <meta name="description" content="Baixe grátis o e-book Glowy 10 Insights: saúde, negócio e propósito conectados por método, não por sorte.">
+    <title>Glowy 10 Insights | E-book Gratuito</title>
+
+    <!-- Google Fonts (ROTA 1: Outfit + Inter) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;800&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    
+
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Open Sans', sans-serif;
-            background: linear-gradient(135deg, #3D1A5F 0%, #1A1A2E 100%);
-            color: #FFFFFF;
-            line-height: 1.6;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        
-        /* Header */
-        .header {
-            text-align: center;
-            padding: 30px 20px;
-        }
-        
-        .logo {
-            max-width: 250px;
-            height: auto;
-            margin-bottom: 20px;
-        }
-        
-        /* Hero Section */
-        .hero {
-            text-align: center;
-            padding: 40px 20px;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-        
-        .badge {
-            display: inline-block;
-            background: #FDB813;
-            color: #1A1A2E;
-            padding: 8px 20px;
-            border-radius: 25px;
-            font-weight: 700;
-            font-size: 14px;
-            text-transform: uppercase;
-            margin-bottom: 20px;
-            animation: pulse 2s infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-        
-        .hero h1 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 42px;
-            font-weight: 800;
-            line-height: 1.2;
-            margin-bottom: 20px;
-            color: #FFFFFF;
-        }
-        
-        .hero h1 span {
-            color: #FDB813;
-        }
-        
-        .hero .subtitle {
-            font-size: 20px;
-            color: #E5E7EB;
-            margin-bottom: 30px;
-            line-height: 1.6;
-        }
-        
-        /* Main Content */
-        .main-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: center;
-            max-width: 1100px;
-            margin: 50px auto;
-            padding: 0 20px;
-        }
-        
-        /* Left Side - Benefits */
-        .benefits {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 40px;
-            border-radius: 20px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .benefits h2 {
-            font-family: 'Poppins', sans-serif;
-            font-size: 28px;
-            font-weight: 700;
-            margin-bottom: 25px;
-            color: #FDB813;
-        }
-        
-        .benefit-item {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 20px;
-        }
-        
-        .benefit-icon {
-            background: linear-gradient(135deg, #FDB813 0%, #F39C12 100%);
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 15px;
-            flex-shrink: 0;
-        }
-        
-        .benefit-icon i {
-            color: #1A1A2E;
-            font-size: 18px;
-        }
-        
-        .benefit-text {
-            flex: 1;
-        }
-        
-        .benefit-text h3 {
-            font-family: 'Poppins', sans-serif;
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 5px;
-            color: #FFFFFF;
-        }
-        
-        .benefit-text p {
-            font-size: 15px;
-            color: #D1D5DB;
-            line-height: 1.5;
-        }
-        
-        /* Right Side - Form */
-        .form-container {
-            background: #FFFFFF;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-        }
-        
-        .form-container h2 {
-            font-family: 'Poppins', sans-serif;
-            font-size: 26px;
-            font-weight: 700;
-            color: #3D1A5F;
-            margin-bottom: 10px;
-            text-align: center;
-        }
-        
-        .form-container .form-subtitle {
-            font-size: 16px;
-            color: #6B7280;
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        
-        .form-group {
-            margin-bottom: 20px;
-        }
-        
-        .form-group label {
-            display: block;
-            font-weight: 600;
-            color: #1A1A2E;
-            margin-bottom: 8px;
-            font-size: 14px;
-        }
-        
-        .form-group input {
-            width: 100%;
-            padding: 15px;
-            border: 2px solid #E5E7EB;
-            border-radius: 10px;
-            font-size: 16px;
-            font-family: 'Open Sans', sans-serif;
-            transition: all 0.3s;
-        }
-        
-        .form-group input:focus {
-            outline: none;
-            border-color: #3D1A5F;
-            box-shadow: 0 0 0 3px rgba(61, 26, 95, 0.1);
-        }
-        
-        .submit-btn {
-            width: 100%;
-            padding: 18px;
-            background: linear-gradient(135deg, #FDB813 0%, #F39C12 100%);
-            color: #1A1A2E;
-            border: none;
-            border-radius: 10px;
-            font-size: 18px;
-            font-weight: 700;
-            font-family: 'Poppins', sans-serif;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        
-        .submit-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(253, 184, 19, 0.4);
-        }
-        
-        .submit-btn i {
-            margin-left: 10px;
-        }
-        
-        .privacy-text {
-            font-size: 12px;
-            color: #9CA3AF;
-            text-align: center;
-            margin-top: 15px;
-            line-height: 1.5;
-        }
-        
-        .privacy-text i {
-            color: #10B981;
-            margin-right: 5px;
-        }
-        
-        /* Social Proof */
-        .social-proof {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 30px;
-            border-radius: 15px;
-            text-align: center;
-            margin: 50px auto;
-            max-width: 800px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .social-proof-stats {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            gap: 30px;
-        }
-        
-        .stat-item {
-            flex: 1;
-            min-width: 150px;
-        }
-        
-        .stat-number {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 42px;
-            font-weight: 800;
-            color: #FDB813;
-            display: block;
-            margin-bottom: 5px;
-        }
-        
-        .stat-label {
-            font-size: 14px;
-            color: #D1D5DB;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        /* Insights Preview */
-        .insights-preview {
-            max-width: 1100px;
-            margin: 60px auto;
-            padding: 0 20px;
-        }
-        
-        .insights-preview h2 {
-            font-family: 'Poppins', sans-serif;
-            font-size: 32px;
-            font-weight: 700;
-            text-align: center;
-            margin-bottom: 40px;
-            color: #FFFFFF;
-        }
-        
-        .insights-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-        }
-        
-        .insight-card {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 30px;
-            border-radius: 15px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s;
-        }
-        
-        .insight-card:hover {
-            transform: translateY(-5px);
-            border-color: #FDB813;
-        }
-        
-        .insight-number {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 48px;
-            font-weight: 800;
-            color: #FDB813;
-            opacity: 0.3;
-            margin-bottom: 10px;
-        }
-        
-        .insight-card h3 {
-            font-family: 'Poppins', sans-serif;
-            font-size: 18px;
-            font-weight: 600;
-            color: #FFFFFF;
-            margin-bottom: 10px;
-            line-height: 1.4;
-        }
-        
-        .insight-card p {
-            font-size: 14px;
-            color: #D1D5DB;
-            line-height: 1.6;
-        }
-        
-        /* CTA Section */
-        .cta-section {
-            background: linear-gradient(135deg, #FDB813 0%, #F39C12 100%);
-            padding: 60px 20px;
-            text-align: center;
-            margin: 60px 0 0 0;
-        }
-        
-        .cta-section h2 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 36px;
-            font-weight: 800;
-            color: #1A1A2E;
-            margin-bottom: 20px;
-        }
-        
-        .cta-section p {
-            font-size: 18px;
-            color: #1A1A2E;
-            margin-bottom: 30px;
-            opacity: 0.9;
-        }
-        
-        .cta-btn {
-            display: inline-block;
-            padding: 18px 40px;
-            background: #3D1A5F;
-            color: #FFFFFF;
-            border-radius: 10px;
-            font-size: 18px;
-            font-weight: 700;
-            font-family: 'Poppins', sans-serif;
-            text-decoration: none;
-            transition: all 0.3s;
-            text-transform: uppercase;
-        }
-        
-        .cta-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(61, 26, 95, 0.4);
-        }
-        
-        /* Footer */
-        .footer {
-            background: #1A1A2E;
-            padding: 30px 20px;
-            text-align: center;
-            color: #9CA3AF;
-            font-size: 14px;
-        }
-        
-        .footer p {
-            margin-bottom: 10px;
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 32px;
-            }
-            
-            .hero .subtitle {
-                font-size: 18px;
-            }
-            
-            .main-content {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-            
-            .benefits, .form-container {
-                padding: 30px 20px;
-            }
-            
-            .insights-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .cta-section h2 {
-                font-size: 28px;
-            }
-        }
-        
-        /* Success Message */
-        .success-message {
-            display: none;
-            background: #10B981;
-            color: #FFFFFF;
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-            margin-top: 20px;
-            font-weight: 600;
-        }
-        
-        .success-message.show {
-            display: block;
-            animation: slideDown 0.5s ease;
-        }
-        
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        /* ============================================================
+           Glowy Life Nutrition — ROTA 1 (Deep Ocean Cyan)
+           Tokens da glowy-brand-guidelines v0.8
+           Background Navy #0A1628 · texto #E8EEF4 · acento cyan #00FFFF
+           acento secundário Gold #C9A84C · Outfit + Inter
+           ============================================================ */
+        :root {
+            /* Cores travadas da rota */
+            --bg: #0A1628;
+            --cyan: #00FFFF;
+            --gold: #C9A84C;
+            --text: #E8EEF4;      /* primário */
+            --text-2: #A8B8C8;    /* secundário */
+            --text-3: #7A8FA0;    /* terciário */
+
+            /* Derivados por color-mix (nenhum hex inventado) */
+            --bg-deep:    color-mix(in srgb, var(--bg) 82%, black);
+            --surface:    color-mix(in srgb, var(--text) 5%, var(--bg));
+            --surface-2:  color-mix(in srgb, var(--text) 8%, var(--bg));
+            --line:       color-mix(in srgb, var(--text) 14%, var(--bg));
+            --line-soft:  color-mix(in srgb, var(--text) 8%, var(--bg));
+            --cyan-soft:  color-mix(in srgb, var(--cyan) 14%, transparent);
+            --gold-soft:  color-mix(in srgb, var(--gold) 16%, transparent);
+
+            /* Tipografia */
+            --font-display: 'Outfit', system-ui, sans-serif;
+            --font-body: 'Inter', system-ui, sans-serif;
+
+            /* Escala tipográfica (8 degraus, grid de 8px) */
+            --t-xs: 0.75rem;  --t-sm: 0.875rem; --t-base: 1rem;    --t-lg: 1.125rem;
+            --t-xl: 1.25rem;  --t-2xl: 1.5rem;  --t-3xl: 1.875rem; --t-4xl: 2.25rem;
+            /* Exceção fluida declarada: hero */
+            --t-hero: clamp(2.25rem, 5vw + 1rem, 3.75rem);
+
+            /* Escala de espaçamento (múltiplos de 4 e 8) */
+            --s-1: 0.25rem; --s-2: 0.5rem; --s-3: 0.75rem; --s-4: 1rem;
+            --s-6: 1.5rem;  --s-8: 2rem;   --s-12: 3rem;    --s-16: 4rem;
+
+            --medida: 60ch;
+            --radius: 16px;
+            --radius-sm: 10px;
         }
 
-        /* Estados de erro / carregamento do formulário de cadastro */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--bg);
+            color: var(--text);
+            font-size: var(--t-base);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 { font-family: var(--font-display); color: var(--text); line-height: 1.1; }
+        p { max-width: var(--medida); }
+        .accent-cyan { color: var(--cyan); }
+
+        .container { max-width: 1160px; margin: 0 auto; padding: 0 var(--s-6); }
+
+        /* Eyebrow (rótulo de seção estilo referência) */
+        .eyebrow {
+            display: inline-flex; flex-direction: column; gap: var(--s-3);
+            font-family: var(--font-display);
+            font-size: var(--t-xs); font-weight: 600; letter-spacing: 0.18em;
+            text-transform: uppercase; color: var(--cyan);
+        }
+        .eyebrow::after { content: ""; width: 48px; height: 2px; background: var(--cyan); }
+        .eyebrow.center { align-items: center; }
+
+        /* Header */
+        .header { border-bottom: 1px solid var(--line-soft); }
+        .header .container {
+            display: flex; align-items: center; justify-content: space-between;
+            padding-block: var(--s-4);
+        }
+        .logo { height: 40px; width: auto; display: block; }
+        .header-note {
+            font-family: var(--font-display); font-size: var(--t-xs); font-weight: 600;
+            letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-3);
+        }
+
+        /* ---------- HERO ---------- */
+        .hero { position: relative; overflow: hidden; }
+        .hero::before {
+            content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+            background:
+                radial-gradient(60% 70% at 78% 40%, color-mix(in srgb, var(--cyan) 8%, transparent), transparent 70%),
+                radial-gradient(50% 60% at 12% 20%, color-mix(in srgb, var(--gold) 6%, transparent), transparent 70%);
+        }
+        /* Campo de partículas (grafismo da referência) */
+        .hero::after {
+            content: ""; position: absolute; z-index: 0; right: -5%; bottom: 0;
+            width: 55%; height: 80%; pointer-events: none; opacity: 0.5;
+            background-image: radial-gradient(color-mix(in srgb, var(--cyan) 55%, transparent) 1px, transparent 1.4px);
+            background-size: 22px 22px;
+            -webkit-mask-image: radial-gradient(70% 60% at 80% 70%, #000 0%, transparent 72%);
+                    mask-image: radial-gradient(70% 60% at 80% 70%, #000 0%, transparent 72%);
+        }
+        .hero .container {
+            position: relative; z-index: 1;
+            display: grid; grid-template-columns: 1.05fr 0.95fr;
+            gap: var(--s-12); align-items: center;
+            padding-block: var(--s-16);
+        }
+        .hero-copy .eyebrow { margin-bottom: var(--s-6); }
+        .hero h1 {
+            font-size: var(--t-hero); font-weight: 800; letter-spacing: -0.02em;
+            margin-bottom: var(--s-6); max-width: 15ch;
+        }
+        .hero .subtitle { font-size: var(--t-lg); color: var(--text-2); margin-bottom: var(--s-4); max-width: 46ch; }
+        .hero .lead-question { font-size: var(--t-lg); color: var(--text-2); max-width: 46ch; }
+        .hero .lead-question strong { color: var(--cyan); font-weight: 600; }
+        .hero-actions { display: flex; flex-wrap: wrap; gap: var(--s-4); align-items: center; margin-top: var(--s-8); }
+
+        /* Livro 3D */
+        .book-wrap {
+            position: relative; display: flex; justify-content: center; align-items: center;
+        }
+        .book-wrap::before {
+            content: ""; position: absolute; width: 78%; height: 78%; border-radius: 50%;
+            background: radial-gradient(circle, color-mix(in srgb, var(--cyan) 22%, transparent), transparent 62%);
+            filter: blur(18px); z-index: 0;
+        }
+        .book-img {
+            position: relative; z-index: 1; max-width: 100%; height: auto;
+            max-height: 520px;
+            filter: drop-shadow(0 30px 60px rgba(0,0,0,0.55));
+        }
+        /* Fallback caso ebook-3d.png ainda não esteja no repo */
+        .book-fallback {
+            position: relative; z-index: 1;
+            width: 300px; aspect-ratio: 3/4; border-radius: 6px;
+            background: linear-gradient(160deg, color-mix(in srgb, var(--cyan) 12%, var(--bg-deep)), var(--bg-deep));
+            border: 1px solid var(--line);
+            flex-direction: column; align-items: center; justify-content: center; gap: var(--s-2);
+            text-align: center; padding: var(--s-6);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.55);
+        }
+        .book-fallback .bf-brand {
+            font-family: var(--font-display); font-size: var(--t-sm); font-weight: 600;
+            letter-spacing: 0.12em; color: var(--text); text-transform: uppercase;
+        }
+        .book-fallback .bf-num { font-family: var(--font-display); font-size: var(--t-4xl); font-weight: 800; color: var(--gold); }
+        .book-fallback .bf-ins { font-family: var(--font-display); font-size: var(--t-xl); font-weight: 600; color: var(--cyan); }
+        .book-fallback small { color: var(--text-3); font-size: var(--t-xs); margin-top: var(--s-4); }
+
+        /* ---------- PILARES (estilo equação da referência) ---------- */
+        .pillars-band { border-block: 1px solid var(--line-soft); background: var(--surface); }
+        .pillars {
+            display: grid; grid-template-columns: auto repeat(3, 1fr);
+            gap: var(--s-8); align-items: center; padding-block: var(--s-12);
+        }
+        .pillars-label {
+            font-family: var(--font-display); font-size: var(--t-xs); font-weight: 600;
+            letter-spacing: 0.14em; text-transform: uppercase; color: var(--cyan);
+            max-width: 12ch; line-height: 1.4;
+        }
+        .pillar { display: flex; align-items: center; gap: var(--s-4); }
+        .pillar-mark {
+            flex-shrink: 0; width: 60px; height: 60px; border-radius: 50%;
+            border: 1.5px solid var(--gold);
+            display: flex; align-items: center; justify-content: center;
+            position: relative;
+        }
+        .pillar-mark span {
+            font-family: var(--font-display); font-size: var(--t-2xl); font-weight: 800; color: var(--gold);
+        }
+        .pillar-mark i {
+            position: absolute; top: -6px; right: -6px; font-size: var(--t-sm);
+            color: var(--gold); background: var(--bg); padding: var(--s-1); border-radius: 50%;
+        }
+        .pillar-text b {
+            display: block; font-family: var(--font-display); font-size: var(--t-base);
+            font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text);
+        }
+        .pillar-text small { font-size: var(--t-sm); color: var(--text-3); }
+
+        /* ---------- MAIN (benefícios + form) ---------- */
+        .main-content {
+            display: grid; grid-template-columns: 1fr 0.9fr;
+            gap: var(--s-12); align-items: start;
+            padding-block: var(--s-16);
+        }
+        .benefits h2 { font-size: var(--t-2xl); font-weight: 600; margin: var(--s-4) 0 var(--s-8); }
+        .benefit-item {
+            display: flex; align-items: flex-start; gap: var(--s-4);
+            padding: var(--s-4) 0; border-top: 1px solid var(--line-soft);
+        }
+        .benefit-item:first-of-type { border-top: none; padding-top: 0; }
+        .benefit-icon {
+            flex-shrink: 0; width: 42px; height: 42px; border-radius: 10px;
+            background: var(--cyan-soft); display: flex; align-items: center; justify-content: center;
+        }
+        .benefit-icon i { color: var(--cyan); font-size: var(--t-lg); }
+        .benefit-text h3 { font-size: var(--t-lg); font-weight: 600; margin-bottom: var(--s-1); }
+        .benefit-text p { font-size: var(--t-sm); color: var(--text-2); }
+
+        /* Form */
+        .form-container {
+            background: var(--surface-2); border: 1px solid var(--line);
+            border-radius: var(--radius); padding: var(--s-8);
+            position: sticky; top: var(--s-6);
+        }
+        .form-container h2 { font-size: var(--t-xl); font-weight: 600; text-align: center; margin-bottom: var(--s-2); }
+        .form-subtitle { font-size: var(--t-sm); color: var(--text-2); text-align: center; margin: 0 auto var(--s-6); max-width: 40ch; }
+        .form-group { margin-bottom: var(--s-4); }
+        .form-group label {
+            display: block; font-size: var(--t-sm); font-weight: 600; color: var(--text); margin-bottom: var(--s-2);
+        }
+        .form-group input {
+            width: 100%; padding: var(--s-3) var(--s-4);
+            border: 1px solid var(--line); border-radius: var(--radius-sm);
+            font-family: var(--font-body); font-size: var(--t-base); color: var(--text);
+            background: var(--bg-deep); transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        .form-group input::placeholder { color: var(--text-3); }
+        .form-group input:focus {
+            outline: none; border-color: var(--cyan);
+            box-shadow: 0 0 0 3px var(--cyan-soft);
+        }
+        .submit-btn {
+            width: 100%; padding: var(--s-4);
+            background: var(--gold); color: var(--bg-deep);
+            border: none; border-radius: var(--radius-sm);
+            font-family: var(--font-display); font-size: var(--t-base); font-weight: 600;
+            cursor: pointer; transition: background 0.2s, transform 0.1s;
+            display: inline-flex; align-items: center; justify-content: center; gap: var(--s-2);
+            margin-top: var(--s-2); letter-spacing: 0.01em;
+        }
+        .submit-btn:hover { background: color-mix(in srgb, var(--gold) 82%, white); }
+        .submit-btn:active { transform: translateY(1px); }
+        .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+        .privacy-text {
+            font-size: var(--t-xs); color: var(--text-3); text-align: center;
+            margin: var(--s-4) auto 0; max-width: 42ch;
+            display: flex; align-items: center; justify-content: center; gap: var(--s-2);
+        }
+        .privacy-text i { color: var(--cyan); }
+
+        /* CTA secundário no hero */
+        .cta-btn {
+            display: inline-flex; align-items: center; gap: var(--s-2);
+            padding: var(--s-4) var(--s-8);
+            background: var(--gold); color: var(--bg-deep);
+            border-radius: var(--radius-sm); text-decoration: none;
+            font-family: var(--font-display); font-size: var(--t-base); font-weight: 600;
+            transition: background 0.2s, transform 0.1s;
+        }
+        .cta-btn:hover { background: color-mix(in srgb, var(--gold) 82%, white); }
+        .cta-btn:active { transform: translateY(1px); }
+        .cta-ghost {
+            display: inline-flex; align-items: center; gap: var(--s-2);
+            font-family: var(--font-display); font-size: var(--t-sm); font-weight: 600;
+            color: var(--text-2); text-decoration: none;
+        }
+        .cta-ghost i { color: var(--cyan); }
+
+        /* Prova social */
+        .social-proof-band { border-block: 1px solid var(--line-soft); background: var(--surface); }
+        .social-proof {
+            display: grid; grid-template-columns: repeat(3, 1fr);
+            gap: var(--s-6); padding-block: var(--s-12); text-align: center;
+        }
+        .stat-item { border-left: 1px solid var(--line-soft); }
+        .stat-item:first-child { border-left: none; }
+        .stat-number {
+            font-family: var(--font-display); font-size: var(--t-3xl); font-weight: 800;
+            color: var(--text); display: block; margin-bottom: var(--s-1); font-variant-numeric: tabular-nums;
+        }
+        .stat-label {
+            font-size: var(--t-xs); font-weight: 600; color: var(--text-3);
+            text-transform: uppercase; letter-spacing: 0.08em;
+        }
+
+        /* Insights */
+        .insights-preview { padding-block: var(--s-16); }
+        .insights-head { text-align: center; margin-bottom: var(--s-12); display: flex; flex-direction: column; align-items: center; gap: var(--s-4); }
+        .insights-preview h2 { font-size: var(--t-3xl); font-weight: 800; max-width: 20ch; }
+        .insights-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--s-6);
+        }
+        .insight-card {
+            background: var(--surface); border: 1px solid var(--line-soft);
+            border-radius: var(--radius); padding: var(--s-6);
+            transition: border-color 0.2s, transform 0.2s;
+        }
+        .insight-card:hover { border-color: color-mix(in srgb, var(--cyan) 40%, var(--bg)); transform: translateY(-3px); }
+        .insight-number {
+            font-family: var(--font-display); font-size: var(--t-sm); font-weight: 600;
+            color: var(--gold); margin-bottom: var(--s-3); display: block; letter-spacing: 0.06em;
+        }
+        .insight-card h3 { font-size: var(--t-lg); font-weight: 600; margin-bottom: var(--s-2); }
+        .insight-card p { font-size: var(--t-sm); color: var(--text-2); }
+
+        /* CTA final */
+        .cta-section {
+            position: relative; overflow: hidden; text-align: center;
+            padding-block: var(--s-16);
+            border-top: 1px solid var(--line-soft);
+            background:
+                radial-gradient(60% 100% at 50% 0%, color-mix(in srgb, var(--cyan) 10%, transparent), transparent 70%),
+                var(--bg-deep);
+        }
+        .cta-section h2 { font-size: var(--t-3xl); font-weight: 800; margin: 0 auto var(--s-4); max-width: 20ch; }
+        .cta-section p { color: var(--text-2); font-size: var(--t-lg); margin: 0 auto var(--s-8); max-width: 52ch; }
+
+        /* Footer */
+        .footer { border-top: 1px solid var(--line-soft); padding-block: var(--s-8); text-align: center; }
+        .footer p { font-size: var(--t-sm); color: var(--text-3); margin: 0 auto var(--s-2); }
+
+        /* Mensagens do formulário */
+        .success-message, .error-message {
+            display: none; padding: var(--s-4); border-radius: var(--radius-sm);
+            text-align: center; margin-top: var(--s-4); font-size: var(--t-sm); font-weight: 600;
+        }
+        .success-message {
+            background: var(--cyan-soft); color: var(--cyan);
+            border: 1px solid color-mix(in srgb, var(--cyan) 35%, transparent);
+        }
         .error-message {
-            display: none;
-            background: #EF4444;
-            color: #FFFFFF;
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-            margin-top: 20px;
-            font-weight: 600;
+            background: color-mix(in srgb, #FF5A5A 12%, var(--bg));
+            color: #FF8A8A; border: 1px solid color-mix(in srgb, #FF5A5A 32%, transparent);
         }
-        
-        .error-message.show {
-            display: block;
-            animation: slideDown 0.5s ease;
+        .success-message.show, .error-message.show { display: block; }
+        .form-group input.invalid { border-color: #FF5A5A; }
+        .form-group input.invalid:focus { border-color: #FF5A5A; box-shadow: 0 0 0 3px color-mix(in srgb, #FF5A5A 18%, transparent); }
+        .field-error { display: none; color: #FF8A8A; font-size: var(--t-xs); font-weight: 600; margin-top: var(--s-2); }
+        .field-error.show { display: block; }
+
+        /* Responsivo */
+        @media (max-width: 900px) {
+            .hero .container { grid-template-columns: 1fr; gap: var(--s-8); padding-block: var(--s-12); }
+            .book-wrap { order: -1; }
+            .book-img { max-height: 380px; }
+            .pillars { grid-template-columns: 1fr; gap: var(--s-6); }
+            .pillars-label { max-width: none; }
+            .main-content { grid-template-columns: 1fr; gap: var(--s-8); }
+            .form-container { position: static; }
         }
-        
-        .form-group input.invalid {
-            border-color: #EF4444;
-        }
-        
-        .form-group input.invalid:focus {
-            border-color: #EF4444;
-            box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15);
-        }
-        
-        .field-error {
-            display: none;
-            color: #EF4444;
-            font-size: 13px;
-            font-weight: 600;
-            margin-top: 6px;
-        }
-        
-        .field-error.show {
-            display: block;
-        }
-        
-        .submit-btn:disabled {
-            opacity: 0.65;
-            cursor: not-allowed;
-        }
-        
-        .submit-btn:disabled:hover {
-            transform: none;
-            box-shadow: none;
+        @media (max-width: 560px) {
+            .social-proof { grid-template-columns: 1fr; gap: var(--s-8); }
+            .stat-item { border-left: none; }
+            .header-note { display: none; }
         }
     </style>
 </head>
 <body>
     <!-- Header -->
-    <div class="header">
+    <header class="header">
         <div class="container">
-            <img src="LogoGlowyLifeNutrition.png" alt="Glowy Life Nutrition" class="logo">
+            <img src="Logo_GlowyLife_brc.png" alt="Glowy Life Nutrition" class="logo">
+            <span class="header-note">E-book gratuito</span>
         </div>
-    </div>
-    
-    <!-- Hero Section -->
-    <div class="hero">
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
         <div class="container">
-            <div class="badge">🎁 100% GRATUITO</div>
-            <h1>
-                10 Insights Que Vão Transformar Sua Visão Sobre <span>Saúde, Bem-Estar e Liberdade Financeira</span>
-            </h1>
-            <p class="subtitle">
-                Descubra o que 95% das pessoas não sabe sobre construir uma vida extraordinária. Baixe agora o e-book gratuito!
-            </p>
-        </div>
-    </div>
-    
-    <!-- Main Content -->
-    <div class="main-content">
-        <!-- Left Side - Benefits -->
-        <div class="benefits">
-            <h2>O que você vai descobrir:</h2>
-            
-            <div class="benefit-item">
-                <div class="benefit-icon">
-                    <i class="fas fa-heartbeat"></i>
-                </div>
-                <div class="benefit-text">
-                    <h3>Saúde Verdadeira</h3>
-                    <p>Por que saúde não é apenas ausência de doença e como alcançar vitalidade plena</p>
+            <div class="hero-copy">
+                <span class="badge eyebrow">A Tese</span>
+                <h1>Vida extraordinária não é sorte. É <span class="accent-cyan">ciência aplicada.</span></h1>
+                <p class="subtitle">10 insights que conectam saúde, negócio e propósito, o método por trás de quem constrói uma vida em outro nível.</p>
+                <p class="lead-question">Você já sabe o que precisa mudar. <strong>A questão é por onde começar.</strong></p>
+                <div class="hero-actions">
+                    <a href="#leadForm" class="cta-btn">Baixar e-book grátis <i class="fas fa-arrow-right"></i></a>
+                    <a href="#insights" class="cta-ghost"><i class="fas fa-arrow-down"></i> Ver os insights</a>
                 </div>
             </div>
-            
-            <div class="benefit-item">
-                <div class="benefit-icon">
-                    <i class="fas fa-brain"></i>
-                </div>
-                <div class="benefit-text">
-                    <h3>Mentalidade de Sucesso</h3>
-                    <p>Como sua mentalidade está sabotando seu sucesso e como reprogramá-la</p>
-                </div>
-            </div>
-            
-            <div class="benefit-item">
-                <div class="benefit-icon">
-                    <i class="fas fa-coins"></i>
-                </div>
-                <div class="benefit-text">
-                    <h3>Liberdade Financeira</h3>
-                    <p>O que é liberdade financeira de verdade e como construí-la</p>
-                </div>
-            </div>
-            
-            <div class="benefit-item">
-                <div class="benefit-icon">
-                    <i class="fas fa-clock"></i>
-                </div>
-                <div class="benefit-text">
-                    <h3>Tempo é Vida</h3>
-                    <p>Por que você está desperdiçando seu ativo mais valioso e como recuperá-lo</p>
-                </div>
-            </div>
-            
-            <div class="benefit-item">
-                <div class="benefit-icon">
-                    <i class="fas fa-users"></i>
-                </div>
-                <div class="benefit-text">
-                    <h3>Poder da Comunidade</h3>
-                    <p>Por que você precisa de uma comunidade de transformação, não apenas de produtos</p>
+            <div class="book-wrap">
+                <img src="ebook-3d.png" alt="E-book Glowy 10 Insights" class="book-img"
+                     onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="book-fallback" style="display:none;">
+                    <span class="bf-brand">Glowy Life</span>
+                    <span class="bf-num">10</span>
+                    <span class="bf-ins">insights</span>
+                    <small>Coloque <b>ebook-3d.png</b> na raiz do projeto</small>
                 </div>
             </div>
         </div>
-        
-        <!-- Right Side - Form -->
-        <div class="form-container">
-            <h2>Baixe Agora Gratuitamente!</h2>
-            <p class="form-subtitle">Preencha os dados abaixo e receba o e-book no seu e-mail</p>
-            
-            <form id="leadForm" novalidate>
-                <div class="form-group">
-                    <label for="name">Nome Completo *</label>
-                    <input type="text" id="name" name="name" placeholder="Digite seu nome" required>
-                    <span class="field-error" id="nameError"></span>
+    </section>
+
+    <!-- Pilares (estilo equação da referência) -->
+    <div class="pillars-band">
+        <div class="container">
+            <div class="pillars">
+                <div class="pillars-label">Os três eixos do livro</div>
+                <div class="pillar">
+                    <div class="pillar-mark"><span>N</span><i class="fas fa-leaf"></i></div>
+                    <div class="pillar-text"><b>Nutra</b><small>seu corpo</small></div>
                 </div>
-                
-                <div class="form-group">
-                    <label for="email">E-mail *</label>
-                    <input type="email" id="email" name="email" placeholder="seu@email.com" required>
-                    <span class="field-error" id="emailError"></span>
+                <div class="pillar">
+                    <div class="pillar-mark"><span>I</span><i class="fas fa-chart-line"></i></div>
+                    <div class="pillar-text"><b>Impulsione</b><small>seu negócio</small></div>
                 </div>
-                
-                <div class="form-group">
-                    <label for="whatsapp">WhatsApp *</label>
-                    <input type="tel" id="whatsapp" name="whatsapp" placeholder="(11) 99999-9999" required>
-                    <span class="field-error" id="whatsappError"></span>
+                <div class="pillar">
+                    <div class="pillar-mark"><span>E</span><i class="fas fa-arrow-up"></i></div>
+                    <div class="pillar-text"><b>Eleve</b><small>sua vida</small></div>
                 </div>
-                
-                <button type="submit" class="submit-btn">
-                    Quero Receber o E-book Grátis <i class="fas fa-download"></i>
-                </button>
-                
-                <p class="privacy-text">
-                    <i class="fas fa-lock"></i>
-                    Seus dados estão seguros. Não enviamos spam.
-                </p>
-            </form>
-            
-            <div class="success-message" id="successMessage">
-                <i class="fas fa-check-circle"></i> Sucesso! Verifique seu e-mail e WhatsApp para receber o e-book.
             </div>
-            
-            <div class="error-message" id="errorMessage" role="alert"></div>
         </div>
     </div>
-    
-    <!-- Social Proof -->
+
+    <!-- Main -->
     <div class="container">
-        <div class="social-proof">
-            <div class="social-proof-stats">
+        <div class="main-content">
+            <div class="benefits">
+                <span class="eyebrow">O que você leva</span>
+                <h2>O que você vai descobrir</h2>
+
+                <div class="benefit-item">
+                    <div class="benefit-icon"><i class="fas fa-heartbeat"></i></div>
+                    <div class="benefit-text">
+                        <h3>Saúde verdadeira</h3>
+                        <p>Por que saúde não é apenas ausência de doença e como alcançar vitalidade plena.</p>
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon"><i class="fas fa-brain"></i></div>
+                    <div class="benefit-text">
+                        <h3>Mentalidade de sucesso</h3>
+                        <p>Como sua mentalidade está sabotando seu sucesso e como reprogramá-la.</p>
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon"><i class="fas fa-coins"></i></div>
+                    <div class="benefit-text">
+                        <h3>Liberdade financeira</h3>
+                        <p>O que é liberdade financeira de verdade e como construí-la.</p>
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon"><i class="fas fa-clock"></i></div>
+                    <div class="benefit-text">
+                        <h3>Tempo é vida</h3>
+                        <p>Por que você está desperdiçando seu ativo mais valioso e como recuperá-lo.</p>
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon"><i class="fas fa-users"></i></div>
+                    <div class="benefit-text">
+                        <h3>Poder da comunidade</h3>
+                        <p>Por que você precisa de uma comunidade de transformação, não apenas de produtos.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Formulário -->
+            <div class="form-container" id="leadForm-anchor">
+                <h2>Baixe agora, gratuitamente</h2>
+                <p class="form-subtitle">Preencha os dados e receba o e-book no seu e-mail.</p>
+
+                <form id="leadForm" novalidate>
+                    <div class="form-group">
+                        <label for="name">Nome completo</label>
+                        <input type="text" id="name" name="name" placeholder="Digite seu nome" required>
+                        <span class="field-error" id="nameError"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" name="email" placeholder="seu@email.com" required>
+                        <span class="field-error" id="emailError"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="whatsapp">WhatsApp</label>
+                        <input type="tel" id="whatsapp" name="whatsapp" placeholder="(11) 99999-9999" required>
+                        <span class="field-error" id="whatsappError"></span>
+                    </div>
+                    <button type="submit" class="submit-btn">
+                        Quero receber o e-book grátis <i class="fas fa-arrow-right"></i>
+                    </button>
+                    <p class="privacy-text">
+                        <i class="fas fa-lock"></i> Seus dados estão seguros. Não enviamos spam.
+                    </p>
+                </form>
+
+                <div class="success-message" id="successMessage">
+                    <i class="fas fa-check-circle"></i> Sucesso! Verifique seu e-mail e WhatsApp para receber o e-book.
+                </div>
+                <div class="error-message" id="errorMessage" role="alert"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Prova social -->
+    <div class="social-proof-band">
+        <div class="container">
+            <div class="social-proof">
                 <div class="stat-item">
                     <span class="stat-number">500+</span>
                     <span class="stat-label">Downloads</span>
                 </div>
                 <div class="stat-item">
-                    <span class="stat-number">4.9/5</span>
+                    <span class="stat-number">4,9/5</span>
                     <span class="stat-label">Avaliação</span>
                 </div>
                 <div class="stat-item">
@@ -648,82 +520,79 @@
             </div>
         </div>
     </div>
-    
-    <!-- Insights Preview -->
-    <div class="insights-preview">
-        <h2>Prévia dos 10 Insights</h2>
-        <div class="insights-grid">
-            <div class="insight-card">
-                <div class="insight-number">#1</div>
-                <h3>A Maioria das Pessoas Está Vivendo Uma Vida Pela Metade</h3>
-                <p>Descubra por que você pode estar operando em apenas 50% do seu potencial.</p>
-            </div>
-            
-            <div class="insight-card">
-                <div class="insight-number">#2</div>
-                <h3>Saúde Não É Apenas Ausência de Doença</h3>
-                <p>Entenda o que é saúde verdadeira e como alcançar vitalidade plena.</p>
-            </div>
-            
-            <div class="insight-card">
-                <div class="insight-number">#3</div>
-                <h3>Sua Mentalidade É O Maior Obstáculo</h3>
-                <p>Aprenda como reprogramar sua mente para o sucesso.</p>
-            </div>
-            
-            <div class="insight-card">
-                <div class="insight-number">#4</div>
-                <h3>Você Não Precisa Escolher Entre Saúde e Dinheiro</h3>
-                <p>Descubra os 3 pilares da vida extraordinária.</p>
-            </div>
-            
-            <div class="insight-card">
-                <div class="insight-number">#5</div>
-                <h3>A Maioria dos Treinamentos É Superficial</h3>
-                <p>Entenda o que é treinamento REAL e como acessá-lo.</p>
-            </div>
-            
-            <div class="insight-card">
-                <div class="insight-number">#6</div>
-                <h3>O Modelo Tradicional Está Ultrapassado</h3>
-                <p>Conheça o modelo omnichannel que está revolucionando o mercado.</p>
-            </div>
-        </div>
-    </div>
-    
-    <!-- CTA Section -->
-    <div class="cta-section">
+
+    <!-- Insights -->
+    <section class="insights-preview" id="insights">
         <div class="container">
-            <h2>Pronto Para Transformar Sua Vida?</h2>
-            <p>Baixe agora o e-book gratuito e dê o primeiro passo para uma vida extraordinária!</p>
-            <a href="#leadForm" class="cta-btn">Baixar E-book Grátis Agora</a>
+            <div class="insights-head">
+                <span class="eyebrow center">Prévia do conteúdo</span>
+                <h2>Uma amostra dos 10 insights</h2>
+            </div>
+            <div class="insights-grid">
+                <div class="insight-card">
+                    <span class="insight-number">Insight 01</span>
+                    <h3>A maioria das pessoas vive uma vida pela metade</h3>
+                    <p>Descubra por que você pode estar operando em apenas 50% do seu potencial.</p>
+                </div>
+                <div class="insight-card">
+                    <span class="insight-number">Insight 02</span>
+                    <h3>Saúde não é apenas ausência de doença</h3>
+                    <p>Entenda o que é saúde verdadeira e como alcançar vitalidade plena.</p>
+                </div>
+                <div class="insight-card">
+                    <span class="insight-number">Insight 03</span>
+                    <h3>Sua mentalidade é o maior obstáculo</h3>
+                    <p>Aprenda como reprogramar sua mente para o sucesso.</p>
+                </div>
+                <div class="insight-card">
+                    <span class="insight-number">Insight 04</span>
+                    <h3>Você não precisa escolher entre saúde e dinheiro</h3>
+                    <p>Descubra os 3 pilares da vida extraordinária.</p>
+                </div>
+                <div class="insight-card">
+                    <span class="insight-number">Insight 05</span>
+                    <h3>A maioria dos treinamentos é superficial</h3>
+                    <p>Entenda o que é treinamento real e como acessá-lo.</p>
+                </div>
+                <div class="insight-card">
+                    <span class="insight-number">Insight 06</span>
+                    <h3>O modelo tradicional está ultrapassado</h3>
+                    <p>Conheça o modelo omnichannel que está revolucionando o mercado.</p>
+                </div>
+            </div>
         </div>
-    </div>
-    
+    </section>
+
+    <!-- CTA final -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Pronto para começar pelo lugar certo?</h2>
+            <p>Baixe agora o Glowy 10 Insights e dê o primeiro passo para uma vida construída por método.</p>
+            <a href="#leadForm" class="cta-btn">Baixar e-book grátis <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </section>
+
     <!-- Footer -->
-    <div class="footer">
+    <footer class="footer">
         <div class="container">
             <p>&copy; 2025 Glowy Life Nutrition. Todos os direitos reservados.</p>
-            <p>📧 contato@glowylife.com | 📱 (11) 99999-9999 | 📸 @glowylifenutrition</p>
+            <p>contato@glowylife.com &nbsp;·&nbsp; (11) 99999-9999 &nbsp;·&nbsp; @glowylifenutrition</p>
         </div>
-    </div>
-    
+    </footer>
+
     <!-- JavaScript -->
     <script>
         // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
+                const href = this.getAttribute('href');
+                const target = document.querySelector(href)
+                    || (href === '#leadForm' ? document.getElementById('leadForm-anchor') : null);
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
             });
         });
-        
+
         // ============================================================
         // CONFIGURAÇÃO DO CADASTRO  (leia o GUIA_IMPLEMENTACAO.md)
         // ============================================================
@@ -732,26 +601,26 @@
         // formulário exibe um ERRO em vez de fingir sucesso — assim nenhum
         // lead é perdido silenciosamente.
         const LEAD_ENDPOINT = 'COLE_AQUI_A_URL_DO_SEU_ENDPOINT';
-        
+
         // Redirecionar para a página de obrigado após o cadastro.
         const REDIRECT_TO_THANK_YOU = true;
         const THANK_YOU_URL = 'obrigado.html';
-        
+
         // ============================================================
-        
+
         const leadForm = document.getElementById('leadForm');
         const submitBtn = leadForm.querySelector('.submit-btn');
         const submitBtnHtml = submitBtn.innerHTML;
         const successMessage = document.getElementById('successMessage');
         const errorMessage = document.getElementById('errorMessage');
         let isSubmitting = false;
-        
+
         const FIELDS = ['name', 'email', 'whatsapp'];
-        
+
         function onlyDigits(value) {
             return value.replace(/\D/g, '');
         }
-        
+
         function setFieldError(field, message) {
             const input = document.getElementById(field);
             const target = document.getElementById(field + 'Error');
@@ -760,18 +629,18 @@
             target.textContent = message || '';
             target.classList.toggle('show', Boolean(message));
         }
-        
+
         function clearFeedback() {
             FIELDS.forEach(field => setFieldError(field, ''));
             errorMessage.classList.remove('show');
             successMessage.classList.remove('show');
         }
-        
+
         function showFormError(message) {
             errorMessage.innerHTML = '<i class="fas fa-exclamation-circle"></i> ' + message;
             errorMessage.classList.add('show');
         }
-        
+
         function setLoading(loading) {
             isSubmitting = loading;
             submitBtn.disabled = loading;
@@ -779,7 +648,7 @@
                 ? 'Enviando... <i class="fas fa-spinner fa-spin"></i>'
                 : submitBtnHtml;
         }
-        
+
         // Valida os três campos e devolve os dados já normalizados,
         // ou null se algo estiver inválido.
         function validateLead() {
@@ -788,37 +657,37 @@
             const whatsapp = document.getElementById('whatsapp').value.trim();
             const whatsappDigits = onlyDigits(whatsapp);
             let firstInvalid = null;
-            
+
             if (name.length < 3 || !/[a-zà-ÿ]/i.test(name)) {
                 setFieldError('name', 'Digite seu nome completo.');
                 firstInvalid = firstInvalid || 'name';
             }
-            
+
             if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) {
                 setFieldError('email', 'Digite um e-mail válido (ex.: seu@email.com).');
                 firstInvalid = firstInvalid || 'email';
             }
-            
+
             if (whatsappDigits.length < 10 || whatsappDigits.length > 11) {
                 setFieldError('whatsapp', 'Digite o WhatsApp com DDD (ex.: (11) 99999-9999).');
                 firstInvalid = firstInvalid || 'whatsapp';
             }
-            
+
             if (firstInvalid) {
                 document.getElementById(firstInvalid).focus();
                 return null;
             }
-            
+
             return { name, email, whatsapp, whatsappDigits };
         }
-        
+
         // Envia o lead. Lança erro se o envio não for confirmado —
         // o sucesso só é exibido quando o servidor responde OK.
         async function sendLead(payload) {
             if (!LEAD_ENDPOINT || LEAD_ENDPOINT.indexOf('COLE_AQUI') === 0) {
                 throw new Error('ENDPOINT_NAO_CONFIGURADO');
             }
-            
+
             // 'text/plain' evita o preflight de CORS; o Google Apps Script
             // continua lendo o corpo normalmente com JSON.parse.
             const response = await fetch(LEAD_ENDPOINT, {
@@ -826,27 +695,27 @@
                 headers: { 'Content-Type': 'text/plain;charset=utf-8' },
                 body: JSON.stringify(payload)
             });
-            
+
             if (!response.ok) {
                 throw new Error('HTTP ' + response.status);
             }
-            
+
             return response;
         }
-        
+
         // Form submission
         leadForm.addEventListener('submit', async function (e) {
             e.preventDefault();
-            
+
             if (isSubmitting) return;
-            
+
             clearFeedback();
-            
+
             const lead = validateLead();
             if (!lead) return;
-            
+
             setLoading(true);
-            
+
             try {
                 await sendLead({
                     name: lead.name,
@@ -856,17 +725,17 @@
                     origem: window.location.href,
                     data: new Date().toISOString()
                 });
-                
+
                 successMessage.classList.add('show');
                 leadForm.reset();
-                
+
                 if (REDIRECT_TO_THANK_YOU) {
                     setTimeout(() => {
                         window.location.href = THANK_YOU_URL;
                     }, 1500);
                     return;
                 }
-                
+
                 setTimeout(() => {
                     successMessage.classList.remove('show');
                 }, 5000);
@@ -880,7 +749,7 @@
                 } else {
                     console.error('Falha ao enviar o cadastro:', error);
                 }
-                
+
                 showFormError(
                     'Não conseguimos concluir seu cadastro agora. ' +
                     'Tente novamente em instantes ou fale com a gente no WhatsApp.'
@@ -889,14 +758,14 @@
                 setLoading(false);
             }
         });
-        
+
         // Limpa o erro do campo assim que a pessoa começa a corrigi-lo
         FIELDS.forEach(field => {
             document.getElementById(field).addEventListener('input', () => {
                 setFieldError(field, '');
             });
         });
-        
+
         // WhatsApp mask
         function formatWhatsapp(digits) {
             if (digits.length === 0) return '';
@@ -909,7 +778,7 @@
             // Celular (11 dígitos): (11) 99999-9999
             return '(' + digits.slice(0, 2) + ') ' + digits.slice(2, 7) + '-' + digits.slice(7, 11);
         }
-        
+
         document.getElementById('whatsapp').addEventListener('input', function (e) {
             e.target.value = formatWhatsapp(onlyDigits(e.target.value).slice(0, 11));
         });
@@ -920,75 +789,60 @@
          visível. Respeita prefers-reduced-motion. Não interfere no formulário. -->
     <script type="module">
         (() => {
-            // Quem pediu menos movimento não vê animação nenhuma.
             if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
             const EASE = [0.22, 1, 0.36, 1];
 
-            // Elementos que animam ao carregar (hero), em cascata.
-            const heroEls = ['.hero h1', '.hero .subtitle']
+            const heroEls = ['.hero h1', '.hero .subtitle', '.hero .lead-question', '.hero-actions']
                 .map(sel => document.querySelector(sel))
                 .filter(Boolean);
             const badge = document.querySelector('.badge');
+            const book = document.querySelector('.book-wrap');
 
-            // Grupos revelados ao entrar na viewport, com stagger nos filhos.
             const groups = [
-                { container: '.main-content',       child: '.benefits, .form-container', y: 28, gap: 0.12 },
-                { container: '.social-proof-stats', child: '.stat-item',                 y: 20, gap: 0.10 },
-                { container: '.insights-grid',      child: '.insight-card',              y: 28, gap: 0.08 },
-                { container: '.cta-section',         child: 'h2, p, .cta-btn',            y: 24, gap: 0.10 },
+                { container: '.pillars',       child: '.pillar',                     y: 20, gap: 0.10 },
+                { container: '.main-content',  child: '.benefits, .form-container',  y: 28, gap: 0.12 },
+                { container: '.social-proof',  child: '.stat-item',                  y: 20, gap: 0.10 },
+                { container: '.insights-grid', child: '.insight-card',               y: 28, gap: 0.08 },
+                { container: '.cta-section',   child: 'h2, p, .cta-btn',             y: 24, gap: 0.10 },
             ];
-            const singles = ['.insights-preview h2'];
+            const singles = ['.insights-head'];
 
-            // Esconde de forma SÍNCRONA (antes do import) pra reduzir flash.
-            // Guardamos tudo pra restaurar caso o Motion não carregue.
             const hidden = [];
             const hide = (el, y) => {
                 el.style.opacity = '0';
                 if (y != null) el.style.transform = `translateY(${y}px)`;
                 hidden.push(el);
             };
-            const restore = () => hidden.forEach(el => {
-                el.style.opacity = '';
-                el.style.transform = '';
-            });
+            const restore = () => hidden.forEach(el => { el.style.opacity = ''; el.style.transform = ''; });
 
             heroEls.forEach(el => hide(el, 24));
-            if (badge) hide(badge, null); // só opacity: não conflita com o @keyframes pulse
-            singles.forEach(sel => {
-                const el = document.querySelector(sel);
-                if (el) hide(el, 24);
-            });
+            if (badge) hide(badge, 12);
+            if (book) hide(book, 0);
+            singles.forEach(sel => { const el = document.querySelector(sel); if (el) hide(el, 24); });
             groups.forEach(g => {
-                const container = document.querySelector(g.container);
-                if (!container) return;
-                container.querySelectorAll(g.child).forEach(el => hide(el, g.y));
+                const c = document.querySelector(g.container);
+                if (c) c.querySelectorAll(g.child).forEach(el => hide(el, g.y));
             });
 
             import('https://cdn.jsdelivr.net/npm/motion@13.4.0/+esm')
                 .then(({ animate, inView }) => {
                     const rise = (el, delay = 0, duration = 0.6) =>
-                        animate(el, { opacity: 1, transform: 'translateY(0px)' },
-                            { duration, delay, ease: EASE });
+                        animate(el, { opacity: 1, transform: 'translateY(0px)' }, { duration, delay, ease: EASE });
 
-                    // Hero em cascata no carregamento.
-                    if (badge) animate(badge, { opacity: 1 }, { duration: 0.5 });
-                    heroEls.forEach((el, i) => rise(el, 0.15 + i * 0.12));
+                    if (badge) rise(badge, 0);
+                    heroEls.forEach((el, i) => rise(el, 0.12 + i * 0.1));
+                    if (book) animate(book, { opacity: 1 }, { duration: 0.9, delay: 0.25, ease: EASE });
 
-                    // Títulos avulsos: revelam ao entrar na tela.
                     singles.forEach(sel => {
                         const el = document.querySelector(sel);
                         if (el) inView(el, () => rise(el), { amount: 0.2 });
                     });
-
-                    // Grupos: revelam os filhos em cascata ao entrar na tela.
                     groups.forEach(g => {
-                        const container = document.querySelector(g.container);
-                        if (!container) return;
-                        const children = Array.from(container.querySelectorAll(g.child));
-                        inView(container, () => {
-                            children.forEach((el, i) => rise(el, i * g.gap));
-                        }, { amount: 0.15 });
+                        const c = document.querySelector(g.container);
+                        if (!c) return;
+                        const children = Array.from(c.querySelectorAll(g.child));
+                        inView(c, () => children.forEach((el, i) => rise(el, i * g.gap)), { amount: 0.15 });
                     });
                 })
                 .catch(err => {
