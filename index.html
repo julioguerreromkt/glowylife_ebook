@@ -347,6 +347,34 @@
         .field-error { display: none; color: #FF8A8A; font-size: var(--t-xs); font-weight: 600; margin-top: var(--s-2); }
         .field-error.show { display: block; }
 
+        /* ---------- Efeitos premium ---------- */
+        .hero-canvas { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+        .hero.has-canvas::after { display: none; } /* troca o campo estático pelo canvas vivo */
+
+        .book-img, .book-fallback { animation: float 6s ease-in-out infinite; will-change: transform; }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-14px); } }
+
+        .book-wrap::before { animation: glowPulse 5s ease-in-out infinite; }
+        @keyframes glowPulse {
+            0%, 100% { opacity: 0.55; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.07); }
+        }
+
+        .insight-card:hover {
+            box-shadow: 0 0 0 1px color-mix(in srgb, var(--cyan) 45%, transparent),
+                        0 18px 40px rgba(0, 0, 0, 0.45);
+        }
+
+        .hero-actions .cta-btn { animation: ctaPulse 2.8s ease-in-out infinite; }
+        @keyframes ctaPulse {
+            0%, 100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--gold) 45%, transparent); }
+            50% { box-shadow: 0 0 26px 2px color-mix(in srgb, var(--gold) 32%, transparent); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .book-img, .book-fallback, .book-wrap::before, .hero-actions .cta-btn { animation: none; }
+        }
+
         /* Responsivo */
         @media (max-width: 900px) {
             .hero .container { grid-template-columns: 1fr; gap: var(--s-8); padding-block: var(--s-12); }
@@ -375,6 +403,7 @@
 
     <!-- Hero -->
     <section class="hero">
+        <canvas class="hero-canvas" aria-hidden="true"></canvas>
         <div class="container">
             <div class="hero-copy">
                 <span class="badge eyebrow">A Tese</span>
@@ -506,15 +535,15 @@
         <div class="container">
             <div class="social-proof">
                 <div class="stat-item">
-                    <span class="stat-number">500+</span>
+                    <span class="stat-number" data-to="500" data-suffix="+">500+</span>
                     <span class="stat-label">Downloads</span>
                 </div>
                 <div class="stat-item">
-                    <span class="stat-number">4,9/5</span>
+                    <span class="stat-number" data-to="4.9" data-decimals="1" data-suffix="/5">4,9/5</span>
                     <span class="stat-label">Avaliação</span>
                 </div>
                 <div class="stat-item">
-                    <span class="stat-number">98%</span>
+                    <span class="stat-number" data-to="98" data-suffix="%">98%</span>
                     <span class="stat-label">Recomendam</span>
                 </div>
             </div>
@@ -849,6 +878,100 @@
                     console.warn('Motion não carregou; a página segue sem animações.', err);
                     restore();
                 });
+        })();
+    </script>
+
+    <!-- Rede de partículas no hero (grafismo vivo da referência) + parallax -->
+    <script>
+        (() => {
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+            const hero = document.querySelector('.hero');
+            const canvas = document.querySelector('.hero-canvas');
+            if (!hero || !canvas || !canvas.getContext) return;
+            hero.classList.add('has-canvas');
+            const ctx = canvas.getContext('2d');
+            const CYAN = 'rgba(0,255,255,';
+            let w, h, dpr, particles, px = 0, py = 0, tx = 0, ty = 0;
+
+            function resize() {
+                dpr = Math.min(window.devicePixelRatio || 1, 2);
+                w = canvas.width = hero.clientWidth * dpr;
+                h = canvas.height = hero.clientHeight * dpr;
+                canvas.style.width = hero.clientWidth + 'px';
+                canvas.style.height = hero.clientHeight + 'px';
+                const count = Math.max(24, Math.min(72, Math.floor(hero.clientWidth / 20)));
+                particles = Array.from({ length: count }, () => ({
+                    x: Math.random() * w, y: Math.random() * h,
+                    vx: (Math.random() - 0.5) * 0.22 * dpr,
+                    vy: (Math.random() - 0.5) * 0.22 * dpr,
+                    r: (Math.random() * 1.4 + 0.6) * dpr
+                }));
+            }
+
+            function tick() {
+                px += (tx - px) * 0.05; py += (ty - py) * 0.05;
+                ctx.clearRect(0, 0, w, h);
+                ctx.save();
+                ctx.translate(px * dpr, py * dpr);
+                const link = 130 * dpr;
+                for (let i = 0; i < particles.length; i++) {
+                    const p = particles[i];
+                    p.x += p.vx; p.y += p.vy;
+                    if (p.x < 0 || p.x > w) p.vx *= -1;
+                    if (p.y < 0 || p.y > h) p.vy *= -1;
+                    ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                    ctx.fillStyle = CYAN + '0.5)'; ctx.fill();
+                    for (let j = i + 1; j < particles.length; j++) {
+                        const q = particles[j], dx = p.x - q.x, dy = p.y - q.y;
+                        const d = Math.hypot(dx, dy);
+                        if (d < link) {
+                            ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(q.x, q.y);
+                            ctx.strokeStyle = CYAN + (0.14 * (1 - d / link)).toFixed(3) + ')';
+                            ctx.lineWidth = 0.6 * dpr; ctx.stroke();
+                        }
+                    }
+                }
+                ctx.restore();
+                requestAnimationFrame(tick);
+            }
+
+            hero.addEventListener('pointermove', (e) => {
+                const rect = hero.getBoundingClientRect();
+                tx = ((e.clientX - rect.left) / rect.width - 0.5) * 24;
+                ty = ((e.clientY - rect.top) / rect.height - 0.5) * 24;
+            });
+            hero.addEventListener('pointerleave', () => { tx = 0; ty = 0; });
+
+            resize();
+            requestAnimationFrame(tick);
+            let rt; window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(resize, 150); });
+        })();
+    </script>
+
+    <!-- Contadores animados na prova social -->
+    <script>
+        (() => {
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+            const els = document.querySelectorAll('.stat-number[data-to]');
+            if (!('IntersectionObserver' in window) || !els.length) return;
+            const fmt = (v, dec) => dec ? v.toFixed(dec).replace('.', ',') : Math.round(v).toString();
+            const run = (el) => {
+                const to = parseFloat(el.dataset.to);
+                const dec = parseInt(el.dataset.decimals || '0', 10);
+                const suf = el.dataset.suffix || '';
+                const dur = 1200, t0 = performance.now();
+                const step = (now) => {
+                    const p = Math.min(1, (now - t0) / dur);
+                    const e = 1 - Math.pow(1 - p, 3);
+                    el.textContent = fmt(to * e, dec) + suf;
+                    if (p < 1) requestAnimationFrame(step);
+                };
+                requestAnimationFrame(step);
+            };
+            const io = new IntersectionObserver((entries) => {
+                entries.forEach(en => { if (en.isIntersecting) { run(en.target); io.unobserve(en.target); } });
+            }, { threshold: 0.4 });
+            els.forEach(el => io.observe(el));
         })();
     </script>
 </body>
